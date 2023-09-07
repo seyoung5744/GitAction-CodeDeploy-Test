@@ -1,6 +1,6 @@
 # appspec.yml
 
-version: 0.0
+version: 0.0.2
 os: linux
 files:
   - source: /
@@ -15,6 +15,12 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: scripts/deploy.sh
-      timeout: 60
+    - location: scripts/run_new_was.sh
+      timeout: 180
+      runas: ec2-user
+    - location: scripts/health_check.sh
+      timeout: 180
+      runas: ec2-user
+    - location: scripts/switch.sh
+      timeout: 180
       runas: ec2-user
