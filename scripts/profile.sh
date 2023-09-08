@@ -4,8 +4,6 @@
 function find_idle_profile() {
   RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1/profile) # Nginx와 연결되어 있는 스프링 부트가 정상 작동 중인지 확인
 
-  echo "> 연경된 상태 확인 $RESPONSE_CODE "
-
   if [ ${RESPONSE_CODE} -ge 400 ] # 400보다 크면(즉, 40x, 50x 에러 모두 포함)
   then
     CURRENT_PROFILE=real2
@@ -30,7 +28,7 @@ function find_idle_profile() {
 # 쉬고 있는 profile의 port 찾기
 function find_idle_port() {
     IDLE_PROFILE=$(find_idle_profile)
-    echo -e "> 쉬고 있는 profile : $IDLE_PROFILE"
+
     if [ ${IDLE_PROFILE} == real1 ]
     then
       echo "8081"
