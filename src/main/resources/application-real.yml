@@ -1,0 +1,8 @@
+logging-module:
+  version: 0.0.1
+
+spring:
+  profiles:
+    group:
+      "real1":
+      "real2":

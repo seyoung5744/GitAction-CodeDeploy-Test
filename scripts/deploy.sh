@@ -9,7 +9,8 @@ DEPLOY_PATH=/home/ec2-user/app/
 cp $BUILD_JAR $DEPLOY_PATH
 
 echo ">>> 현재 실행중인 애플리케이션 pid 확인" >> /home/ec2-user/app/deploy.log
-CURRENT_PID=$(pgrep -f $JAR_NAME)
+#CURRENT_PID=$(pgrep -f $JAR_NAME)
+CURRENT_PID=$(lsof -ti tcp:8080)
 
 if [ -z $CURRENT_PID ]
 then
