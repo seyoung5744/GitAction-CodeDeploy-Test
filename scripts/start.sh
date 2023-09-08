@@ -5,7 +5,6 @@ ABSDIR=$(dirname $ABSPATH)
 source ${ABSDIR}/profile.sh # 여기서도 profile.sh 함수를 사용
 
 REPOSITORY=/home/ec2-user/app
-PROJECT_NAME=spring_deploy_test
 
 echo "> Build 파일 복사"
 echo "> cp $REPOSITORY/build/libs/*.jar $REPOSITORY/"

@@ -11,6 +11,7 @@ function find_idle_profile() {
     CURRENT_PROFILE=$(curl -s http://localhost/profile)
   fi
 
+  echo "현재 실행 중인 $CURRENT_PROFILE"
   # 연결되지 않은 profile 저장
   if [ ${CURRENT_PROFILE} == real1 ]
   then
@@ -18,6 +19,8 @@ function find_idle_profile() {
   else
     IDLE_PROFILE=real1
   fi
+
+  echo "저장된 real $IDLE_PROFILE"
 
   echo "${IDLE_PROFILE}" # IDLE_PROFILE 출력. 스크립트는 값을 반환하는 기능이 없어서 마지막 줄 echo로 출력 후 그 값을 캐치하는 식으로 전송한다. ($(find_idle_profile))
 }
