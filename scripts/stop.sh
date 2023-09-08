@@ -7,7 +7,7 @@ source ${ABSDIR}/profile.sh # 자바 import와 비슷한 기능. 해당 코드�
 IDLE_PORT=$(find_idle_port)
 
 echo "> $IDLE_PORT 에서 구동 중인 애플리케이션 pid 확인"
-IDLE_PID=$(lsof -ti tcp:${IDLE_PORT})
+IDLE_PID=$(sudo lsof -ti tcp:${IDLE_PORT})
 
 if [ -z ${IDLE_PID} ]
 then
