@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    group:
+      "real1": "oauth, real-db"
+      "real2": "oauth, real-db"
+    default: real1
