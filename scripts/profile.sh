@@ -2,15 +2,15 @@
 
 # 쉬고 있는 profile 찾기: real1이 사용 중이면 real2가 쉼. 반대로, real2가 사용 중이면 real1이 쉼.
 function find_idle_profile() {
-  RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile) # Nginx와 연결되어 있는 스프링 부트가 정상 작동 중인지 확인
+  RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1/profile) # Nginx와 연결되어 있는 스프링 부트가 정상 작동 중인지 확인
 
   echo "> 연경된 상태 확인 $RESPONSE_CODE "
-  
+
   if [ ${RESPONSE_CODE} -ge 400 ] # 400보다 크면(즉, 40x, 50x 에러 모두 포함)
   then
     CURRENT_PROFILE=real2
   else
-    CURRENT_PROFILE=$(curl -s http://localhost/profile)
+    CURRENT_PROFILE=$(curl -s http://127.0.0.1/profile)
   fi
 
 
